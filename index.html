@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KPI Bếp - Dự báo chuẩn bị ca sáng</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>KPI Chuẩn Bị Bếp Ca Sáng</h1>
+        <p>
+          Nhập tồn cuối ngày, thêm món dự kiến bán và định mức theo từng món để hệ thống tự
+          tính nguyên liệu cần chuẩn bị + KPI thời gian cho bếp.
+        </p>
+      </header>
+
+      <section class="card">
+        <div class="section-title-row">
+          <h2>1) Tồn cuối ngày hôm nay</h2>
+          <button id="addInventoryBtn" type="button" class="secondary-btn">+ Thêm nguyên vật liệu</button>
+        </div>
+        <p class="section-note">Ví dụ: Đậu, Bò, Nước dùng... (đơn vị: miếng/kg/nồi...)</p>
+        <div id="inventoryList" class="stack"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-title-row">
+          <h2>2) Dự báo sản lượng giờ cao điểm ngày mai</h2>
+          <button id="addDishBtn" type="button" class="secondary-btn">+ Thêm món dự kiến bán</button>
+        </div>
+
+        <div class="grid two-col">
+          <label>
+            Giờ bắt đầu làm bếp
+            <input id="kitchenStartTime" type="time" value="06:00" />
+          </label>
+        </div>
+
+        <div id="dishList" class="stack"></div>
+      </section>
+
+      <section class="card">
+        <h2>3) Năng lực bếp theo nguyên vật liệu</h2>
+        <p class="section-note">
+          Nhập sản lượng mỗi mẻ + thời gian mỗi mẻ cho nguyên vật liệu cần sơ chế/chế biến.
+        </p>
+        <div id="capacityList" class="stack"></div>
+        <button id="calculateButton" type="button">Tính KPI cho bếp ngày mai</button>
+      </section>
+
+      <section id="result" class="card result" hidden>
+        <h2>Kết quả KPI bếp ngày mai</h2>
+        <div id="resultContent"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
