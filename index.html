@@ -3,55 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KPI Bếp - Quản lý tồn & chuẩn bị ca sáng</title>
+    <title>KPI Bếp - Dự báo chuẩn bị ca sáng</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="app">
-      <header class="hero">
+    <main class="container">
+      <header>
         <h1>KPI Chuẩn Bị Bếp Ca Sáng</h1>
         <p>
-          Nhập tồn cuối ngày, dự báo số tô/bát theo từng món, định mức nguyên liệu và năng lực bếp.
-          Hệ thống sẽ tự tính nguyên liệu cần chuẩn bị và mốc giờ hoàn thành.
+          Nhập tồn cuối ngày và sản lượng dự kiến giờ cao điểm ngày mai để hệ thống tự
+          tính khối lượng cần chuẩn bị.
         </p>
       </header>
 
-      <section class="panel">
-        <div class="panel-head">
-          <h2>1) Tồn cuối ngày hôm nay</h2>
-          <button id="addIngredientBtn" type="button" class="btn btn-secondary">+ Thêm nguyên vật liệu</button>
-        </div>
-        <p class="hint">Ví dụ: Đậu, Bò, Nước dùng...</p>
-        <div id="ingredientsContainer" class="stack"></div>
-      </section>
+      <section class="card">
 
-      <section class="panel">
-        <div class="panel-head">
-          <h2>2) Dự báo sản lượng giờ cao điểm ngày mai</h2>
-          <button id="addDishBtn" type="button" class="btn btn-secondary">+ Thêm món dự kiến bán</button>
-        </div>
-
-        <div class="grid two">
           <label>
             Giờ bắt đầu làm bếp
-            <input id="startTime" type="time" value="06:00" />
+            <input id="kitchenStartTime" type="time" value="06:00" />
+          </label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>3) Định mức & năng lực bếp (có thể chỉnh)</h2>
+        <div class="grid">
+          <label>
+            Đậu / bát (miếng)
+            <input id="tofuPerBowl" type="number" min="0" step="0.1" value="5" />
+          </label>
+
+          <label>
+            1 bìa đậu chiên ra (miếng)
+            <input id="tofuPiecesPerBlock" type="number" min="0.1" step="0.1" value="8" />
+          </label>
+
+          <label>
+            Mỗi mẻ chiên đậu (bìa)
+            <input id="tofuBlocksPerBatch" type="number" min="0.1" step="0.1" value="25" />
+          </label>
+
+          <label>
+            Thời gian 1 mẻ đậu (phút)
+            <input id="tofuBatchMinutes" type="number" min="0.1" step="0.1" value="12" />
+          </label>
+
+          <label>
+            Bò / bát (gram)
+            <input id="beefGramsPerBowl" type="number" min="0" step="1" value="35" />
+          </label>
+
+          <label>
+            Mỗi mẻ sơ chế bò (kg)
+            <input id="beefKgPerBatch" type="number" min="0.1" step="0.1" value="2" />
+          </label>
+
+          <label>
+            Thời gian 1 mẻ bò (phút)
+            <input id="beefBatchMinutes" type="number" min="0.1" step="0.1" value="10" />
           </label>
         </div>
 
-        <div id="dishesContainer" class="stack"></div>
+        <button id="calculateButton">Tính KPI cho bếp ngày mai</button>
       </section>
 
-      <section class="panel">
-        <h2>3) Năng lực chế biến theo nguyên vật liệu</h2>
-        <p class="hint">Mỗi nguyên liệu: nhập năng suất/mẻ và thời gian/mẻ.</p>
-        <div id="capacityContainer" class="stack"></div>
-      </section>
-
-      <section class="panel">
-        <button id="calculateBtn" type="button" class="btn btn-primary">Tính KPI cho bếp ngày mai</button>
-      </section>
-
-      <section id="resultPanel" class="panel" hidden>
+      <section id="result" class="card result" hidden>
         <h2>Kết quả KPI bếp ngày mai</h2>
         <div id="resultContent"></div>
       </section>
