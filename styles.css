@@ -6,13 +6,17 @@
   --card: #fffef6;
   --line: #d9cf9d;
   --text: #193818;
+  --muted: #3f5f2b;
   --green-dark: #1f5f2d;
+  --green-darker: #174724;
   --yellow: #facc15;
   --yellow-soft: #fff3bf;
   --shadow: 0 10px 28px rgba(31, 95, 45, 0.15);
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -21,9 +25,9 @@ body {
 }
 
 .container {
-  max-width: 1080px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 18px 12px 30px;
+  padding: 18px 12px 28px;
 }
 
 header {
@@ -34,8 +38,18 @@ header {
   box-shadow: var(--shadow);
 }
 
-header h1 { margin: 0 0 6px; font-size: 1.35rem; line-height: 1.25; }
-header p { margin: 0; color: #e6ffd7; font-size: 0.95rem; line-height: 1.45; }
+header h1 {
+  margin: 0 0 6px;
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+header p {
+  margin: 0;
+  color: #e6ffd7;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
 
 .card {
   background: var(--card);
@@ -46,63 +60,16 @@ header p { margin: 0; color: #e6ffd7; font-size: 0.95rem; line-height: 1.45; }
   box-shadow: 0 5px 16px rgba(25, 56, 24, 0.08);
 }
 
-.card h2 { margin: 0; font-size: 1.03rem; color: var(--green-dark); }
-
-.section-title-row {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.section-note {
+.card h2 {
   margin: 0 0 10px;
-  color: #3f5f2b;
-  font-size: 0.9rem;
+  font-size: 1.03rem;
+  color: var(--green-dark);
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
-}
-
-.stack {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.item-row,
-.recipe-row {
-  border: 1px dashed #c7b767;
-  border-radius: 12px;
-  padding: 10px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
-  background: #fffdf0;
-}
-
-.dish-card {
-  border: 1px solid #d9cf9d;
-  border-radius: 12px;
-  padding: 10px;
-  background: #fffdf2;
-}
-
-.recipe-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.row-actions {
-  margin-top: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 }
 
 label {
@@ -114,25 +81,16 @@ label {
   color: var(--green-dark);
 }
 
-input,
-select {
+input {
   border: 1px solid #c5b867;
   border-radius: 10px;
-  padding: 12px;
-  font-size: 1.05rem;
+  padding: 10px;
+  font-size: 1rem;
   color: #173218;
   background: #fffef3;
 }
 
-/* Làm số nhập dễ thao tác trên điện thoại + ưu tiên mở bàn phím số */
-input[type="number"] {
-  font-size: 1.15rem;
-  font-weight: 700;
-  min-height: 48px;
-}
-
-input:focus,
-select:focus {
+input:focus {
   outline: 2px solid #86b348;
   border-color: #86b348;
 }
@@ -150,27 +108,23 @@ button {
   cursor: pointer;
 }
 
-.secondary-btn {
-  margin-top: 0;
-  background: #2d7a33;
-  color: #f2ffe7;
-  width: auto;
-  padding: 9px 12px;
-  font-size: 0.88rem;
+button:hover {
+  filter: brightness(1.04);
 }
 
-.danger-btn {
-  margin-top: 0;
-  background: #b91c1c;
-  color: #fff4f4;
-  width: auto;
-  padding: 8px 10px;
-  font-size: 0.84rem;
+.result {
+  border: 2px solid #9bb23f;
 }
 
-.result { border: 2px solid #9bb23f; }
-.result p, .result li { line-height: 1.55; }
-.result ul { margin: 8px 0 0; padding-left: 20px; }
+.result p,
+.result li {
+  line-height: 1.55;
+}
+
+.result ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
 
 .kpi-highlight {
   background: linear-gradient(140deg, #fef08a, var(--yellow-soft));
@@ -180,19 +134,32 @@ button {
   margin-top: 10px;
 }
 
-@media (min-width: 760px) {
-  .container { padding: 24px 16px 38px; }
-  header { padding: 22px 20px; }
-  header h1 { font-size: 1.7rem; }
-  .card { padding: 16px; margin-top: 14px; }
-
-  .section-title-row {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+@media (min-width: 640px) {
+  .container {
+    padding: 24px 16px 38px;
   }
 
-  .grid.two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .item-row,
-  .recipe-row { grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: end; }
+  header {
+    padding: 22px 20px;
+  }
+
+  header h1 {
+    font-size: 1.7rem;
+  }
+
+  .card {
+    padding: 16px;
+    margin-top: 14px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
